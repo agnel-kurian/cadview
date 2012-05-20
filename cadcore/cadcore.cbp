@@ -43,6 +43,7 @@
 		<Unit filename="cad_gtk_adaptor.cpp" />
 		<Unit filename="cad_gtk_adaptor.h" />
 		<Unit filename="cad_gui_view.h" />
+		<Unit filename="cad_input.h" />
 		<Unit filename="cad_primitives.h" />
 		<Extensions>
 			<code_completion />
