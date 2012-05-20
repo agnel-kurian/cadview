@@ -2,7 +2,7 @@
 <CodeBlocks_workspace_file>
 	<Workspace title="Workspace">
 		<Project filename="cadcore/cadcore.cbp" />
-		<Project filename="cadview/cadview.cbp" />
-		<Project filename="gtklab/gtklab.cbp" active="1" />
+		<Project filename="cadview/cadview.cbp" active="1" />
+		<Project filename="gtklab/gtklab.cbp" />
 	</Workspace>
 </CodeBlocks_workspace_file>
