@@ -87,48 +87,7 @@ public:
 
     if(current_cmd != 0)
       current_cmd->paint(graphics);
-/*
-    run through list of entities and display
-    get_point need not do anything here yet
-    even if snap is on, we expect current_cmd to display the glyph
 
-      if current_cmd != 0
-        current_cmd->paint(...);
-
-      const vector< polyline_2d<T> >& lines =
-      document.get_polylines();
-
-    for(int i = 0, n = lines.size(); i < n; ++i){
-
-      const vector< point_2d<T> >& points = lines[i].points;
-      const point_2d<T>& p0 = points[0];
-      graphics.move_to(p0.x, p0.y);
-      for(int ipoint = 1, npoint = points.size();
-        ipoint < npoint; ++ipoint){
-
-        const point_2d<T>& pi = points[ipoint];
-        graphics.line_to(pi.x, pi.y);
-
-      }
-    }
-
-    //  run through a list of overlays and draw? ...
-    //  or...
-    vector< point_2d<T> >& points = new_polyline.points;
-
-    if(points.size() > 0){
-
-      graphics.draw_polyline(new_polyline);
-      point_2d<T>& plast = points.back();
-      graphics.move_to(plast.x, plast.y);
-      int x, y;
-      gui.get_mouse_position(&x, &y);
-      T dx = (T)x, dy = (T)y;
-      graphics.device_to_user(&dx, &dy);
-      graphics.line_to(dx, dy);
-
-    }
-*/
     graphics.end_paint();
   }
 
@@ -169,30 +128,11 @@ public:
     }
   /*
     otherwise...
-    if(panning){
-      // do panning
-    }
-    else {
+
       find object under cursor and highlight?
-    }
 
+  */
 
-
-    */
-
-/*
-    if(is_panning){
-      T dx = (T)x, dy = (T)y;
-      graphics_type graphics(gui);
-      graphics.set_matrix(scale, translate_x, translate_y);
-      graphics.device_to_user(&dx, &dy);
-      translate_x += dx - pan_start.x;
-      translate_y += dy - pan_start.y;
-      gui.invalidate();
-    }
-    else if(new_polyline.points.size() > 0)
-      gui.invalidate();
-*/
   }
 
   void mouse_down(Mouse_button button, int x, int y){
