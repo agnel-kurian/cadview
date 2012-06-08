@@ -11,11 +11,30 @@ void menu_file_quit(GtkMenuItem *menuitem, gpointer user_data){
   gtk_main_quit();
 }
 
+void menu_file_select(GtkMenuItem *menuitem, gpointer user_data){
+  cad_core::cad_gui_view<double,
+    cad_core::cad_gtk_adaptor<double> > *view =
+    (cad_core::cad_gui_view<double,
+      cad_core::cad_gtk_adaptor<double> >*) user_data;
+  view->run_select_cmd();
+}
+
+void menu_file_polyline(GtkMenuItem *menuitem, gpointer user_data){
+  cad_core::cad_gui_view<double,
+    cad_core::cad_gtk_adaptor<double> > *view =
+    (cad_core::cad_gui_view<double,
+      cad_core::cad_gtk_adaptor<double> >*) user_data;
+  view->run_polyline_cmd();
+
+}
+
 int main (int argc, char *argv[])
 {
   GtkBuilder *builder;
   GtkWidget *window;
   GtkWidget *quit;
+  GtkWidget *select;
+  GtkWidget *polyline;
   GtkWidget *slate;
   GtkWidget *vbox;
 
@@ -27,6 +46,8 @@ int main (int argc, char *argv[])
   g_signal_connect(G_OBJECT(window), "destroy",
     G_CALLBACK(menu_file_quit), NULL);
   quit = GTK_WIDGET(gtk_builder_get_object(builder, "quit"));
+  select = GTK_WIDGET(gtk_builder_get_object(builder, "select"));
+  polyline = GTK_WIDGET(gtk_builder_get_object(builder, "polyline"));
   vbox = GTK_WIDGET(gtk_builder_get_object(builder, "vbox"));
 
   slate = gtk_slate_new();
@@ -39,6 +60,11 @@ int main (int argc, char *argv[])
   cad_core::cad_gui_view<double,
     cad_core::cad_gtk_adaptor<double> > view(document, gui);
   gtk_slate_set_view(slate, &view);
+
+  g_signal_connect(G_OBJECT(select), "activate",
+    G_CALLBACK(menu_file_select), &view);
+  g_signal_connect(G_OBJECT(polyline), "activate",
+    G_CALLBACK(menu_file_polyline), &view);
 
   GtkWidget *placeholder = GTK_WIDGET(gtk_builder_get_object(builder, "placeholder"));
   gtk_container_remove(GTK_CONTAINER(vbox), GTK_WIDGET(placeholder));

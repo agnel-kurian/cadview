@@ -11,10 +11,15 @@ private:
   vector< point_2d<T> > points;
   vector< line_2d<T> > lines;
 
+//  vector<cad_entity<T>* > entities;
 public:
   const vector< polyline_2d<T> >& get_polylines() {
     return polylines;
   }
+
+//  const vector<cad_entity<T>* >& get_entities(){
+//    return entities;
+//  }
 
   int add_polyline(const polyline_2d<T>& polyline){
     polylines.push_back(polyline);

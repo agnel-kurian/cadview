@@ -35,9 +35,10 @@
 		<Linker>
 			<Add option="`pkg-config gtk+-2.0 --libs`" />
 		</Linker>
-		<Unit filename="main.c">
-			<Option compilerVar="CC" />
-		</Unit>
+		<Unit filename="cadview.glade" />
+		<Unit filename="main.cpp" />
+		<Unit filename="slate.cpp" />
+		<Unit filename="slate.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

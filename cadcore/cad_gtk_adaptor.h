@@ -47,6 +47,15 @@ public:
   void invalidate(){
     gdk_window_invalidate_rect(widget->window, NULL, FALSE);
   }
+
+  void start_event_loop(){
+    gtk_main();
+  }
+
+  void end_event_loop(){
+    gtk_main_quit();
+  }
+
 };
 
 }

@@ -183,8 +183,8 @@ cad_core::Mouse_button Mouse_button_from_Gtk(guint gtk_mouse_button){
   }
 }
 
-gboolean gtk_slate_button_press (GtkWidget	     *widget,
-         GdkEventButton      *event){
+gboolean gtk_slate_button_press (GtkWidget *widget, GdkEventButton *event){
+
   GtkSlate *slate = GTK_SLATE(widget);
   cad_core::Mouse_button button = Mouse_button_from_Gtk(event->button);
   slate->view->mouse_down(button, event->x, event->y);
@@ -192,8 +192,7 @@ gboolean gtk_slate_button_press (GtkWidget	     *widget,
   return TRUE;
 }
 
-gboolean gtk_slate_button_release (GtkWidget	     *widget,
-         GdkEventButton      *event){
+gboolean gtk_slate_button_release (GtkWidget *widget, GdkEventButton *event){
 
   GtkSlate *slate = GTK_SLATE(widget);
   cad_core::Mouse_button button = Mouse_button_from_Gtk(event->button);
@@ -216,8 +215,7 @@ cad_core::Mouse_scroll_direction Mouse_scroll_direction_from_Gtk(
 
 }
 
-gboolean gtk_slate_scroll_event(GtkWidget           *widget,
-					 GdkEventScroll      *event){
+gboolean gtk_slate_scroll_event(GtkWidget *widget, GdkEventScroll *event){
 
   GtkSlate *slate = GTK_SLATE(widget);
   slate->view->mouse_scroll(
