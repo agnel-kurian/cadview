@@ -157,6 +157,16 @@ public:
       current_cmd->mouse_move(x, y);
       return;
     }
+
+    if(is_panning){
+      T dx = (T)x, dy = (T)y;
+      graphics_type graphics(gui);
+      graphics.set_matrix(scale, translate_x, translate_y);
+      graphics.device_to_user(&dx, &dy);
+      translate_x += dx - pan_start.x;
+      translate_y += dy - pan_start.y;
+      gui.invalidate();
+    }
   /*
     otherwise...
     if(panning){
