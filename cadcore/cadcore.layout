@@ -2,33 +2,33 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="cad_cairo_graphics.h" open="0" top="0" tabpos="5">
-		<Cursor position="261" topLine="0" />
+		<Cursor position="244" topLine="66" />
 	</File>
-	<File name="cad_cmd.h" open="1" top="0" tabpos="7">
-		<Cursor position="531" topLine="12" />
+	<File name="cad_cmd.h" open="0" top="0" tabpos="7">
+		<Cursor position="528" topLine="32" />
 	</File>
 	<File name="cad_document.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="54" topLine="0" />
 	</File>
-	<File name="cad_document.h" open="1" top="1" tabpos="9">
-		<Cursor position="674" topLine="3" />
+	<File name="cad_document.h" open="0" top="0" tabpos="9">
+		<Cursor position="469" topLine="0" />
 	</File>
 	<File name="cad_gtk_adaptor.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="20" topLine="0" />
 	</File>
-	<File name="cad_gtk_adaptor.h" open="1" top="0" tabpos="6">
-		<Cursor position="939" topLine="31" />
+	<File name="cad_gtk_adaptor.h" open="1" top="0" tabpos="5">
+		<Cursor position="906" topLine="17" />
 	</File>
-	<File name="cad_gui_view.h" open="1" top="0" tabpos="8">
-		<Cursor position="1739" topLine="18" />
+	<File name="cad_gui_view.h" open="1" top="1" tabpos="3">
+		<Cursor position="3777" topLine="152" />
 	</File>
-	<File name="cad_input.h" open="1" top="0" tabpos="2">
-		<Cursor position="485" topLine="0" />
+	<File name="cad_polyline_cmd.h" open="1" top="0" tabpos="1">
+		<Cursor position="1280" topLine="39" />
 	</File>
-	<File name="cad_polyline_cmd.h" open="1" top="0" tabpos="3">
-		<Cursor position="1576" topLine="13" />
+	<File name="cad_primitives.h" open="1" top="0" tabpos="2">
+		<Cursor position="1677" topLine="40" />
 	</File>
-	<File name="cad_primitives.h" open="1" top="0" tabpos="5">
-		<Cursor position="1611" topLine="43" />
+	<File name="cad_select_cmd.h" open="0" top="0" tabpos="0">
+		<Cursor position="267" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

@@ -41,15 +41,12 @@
 		<Unit filename="cad_cmd.h" />
 		<Unit filename="cad_document.cpp" />
 		<Unit filename="cad_document.h" />
-		<Unit filename="cad_getpoint_cmd.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
 		<Unit filename="cad_gtk_adaptor.cpp" />
 		<Unit filename="cad_gtk_adaptor.h" />
 		<Unit filename="cad_gui_view.h" />
-		<Unit filename="cad_input.h" />
 		<Unit filename="cad_polyline_cmd.h" />
 		<Unit filename="cad_primitives.h" />
+		<Unit filename="cad_select_cmd.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
