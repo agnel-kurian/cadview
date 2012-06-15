@@ -1,4 +1,6 @@
-must not need to create graphics object to access matrix type
+//must not need to create graphics object to access matrix type
+capture the mouse; clicking outside widget should cancel get_point
+
 keyboard input
 
 
