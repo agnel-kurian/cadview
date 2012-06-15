@@ -1,4 +1,4 @@
-use simple matrix lib
+must not need to create graphics object to access matrix type
 keyboard input
 
 

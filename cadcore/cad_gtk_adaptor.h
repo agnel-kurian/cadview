@@ -48,11 +48,11 @@ public:
     gdk_window_invalidate_rect(widget->window, NULL, FALSE);
   }
 
-  void start_event_loop(){
+  void run_event_loop(){
     gtk_main();
   }
 
-  void end_event_loop(){
+  void exit_event_loop(){
     gtk_main_quit();
   }
 

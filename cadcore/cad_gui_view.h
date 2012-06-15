@@ -51,7 +51,7 @@ public:
     in_get_point = true;
     get_point_cancelled = false;
 
-    gui.start_event_loop();
+    gui.run_event_loop();
     if(get_point_cancelled){
       in_get_point = false;
       return false;
@@ -157,12 +157,16 @@ public:
         return;
 
       if(in_get_point){
-        graphics_type graphics(gui);
-        graphics.set_matrix(scale, translate_x, translate_y);
+        matrix_type mx;
+        graphics_type::set_matrix(&mx,
+          scale, translate_x, translate_y);
+        graphics_type::invert_matrix(&mx);
         get_point_point.x = (T)x;
         get_point_point.y = (T)y;
-        graphics.device_to_user(&get_point_point.x, &get_point_point.y);
-        gui.end_event_loop();
+        graphics_type::transform_point(&mx,
+          &get_point_point.x, &get_point_point.y);
+
+        gui.exit_event_loop();
         return;
       }
       /*
@@ -187,7 +191,7 @@ public:
     else if(button == Mouse_button_Right){
       if(in_get_point){
         get_point_cancelled = true;
-        gui.end_event_loop();
+        gui.exit_event_loop();
         return;
       }
       /*
