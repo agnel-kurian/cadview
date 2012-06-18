@@ -1,10 +1,31 @@
+win32 version
+mfc version
+Qt version??!!!
+.NET version
+WPF?
+Web based?!
 //must not need to create graphics object to access matrix type
 capture the mouse; clicking outside widget should cancel get_point
 
+how about having mouse/keyboard handlers for each mode. mode being one of: default, get_point, get_string, get_point_or_string
+
 keyboard input
+snap
+ortho
+dimensioning
+text
+blocks
+automation
+handles (grips)
+layers
+line styles
+line colors
+hatch
+trim
+dxf support
 
 
-view must maintain a matrix so that graphics does not need to be used for device_to_user operation
+// postponed: view must maintain a matrix so that graphics does not need to be used for device_to_user operation
 
 
 

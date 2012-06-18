@@ -62,7 +62,8 @@ public:
 
     gui.invalidate();
 
-    view.document.add_polyline(new_polyline);
+    if(new_polyline.points.size() > 1)
+      view.document.add_polyline(new_polyline);
     return true;
   }
 

@@ -16,14 +16,14 @@
 	<File name="cad_gtk_adaptor.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="20" topLine="0" />
 	</File>
-	<File name="cad_gtk_adaptor.h" open="1" top="0" tabpos="5">
+	<File name="cad_gtk_adaptor.h" open="1" top="0" tabpos="4">
 		<Cursor position="906" topLine="17" />
 	</File>
-	<File name="cad_gui_view.h" open="1" top="1" tabpos="3">
-		<Cursor position="3777" topLine="152" />
+	<File name="cad_gui_view.h" open="1" top="0" tabpos="3">
+		<Cursor position="1079" topLine="32" />
 	</File>
-	<File name="cad_polyline_cmd.h" open="1" top="0" tabpos="1">
-		<Cursor position="1280" topLine="39" />
+	<File name="cad_polyline_cmd.h" open="1" top="1" tabpos="1">
+		<Cursor position="1327" topLine="41" />
 	</File>
 	<File name="cad_primitives.h" open="1" top="0" tabpos="2">
 		<Cursor position="1677" topLine="40" />

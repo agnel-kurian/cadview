@@ -2363,3 +2363,57 @@
 	<cassert>
 	<cstdio>
 
+1339752773 source:/home/agnel/cadview/src/gladeui/main.cpp
+	<stdlib.h>
+	<gtk/gtk.h>
+	"slate.h"
+	<iostream>
+
+1339752773 /home/agnel/cadview/src/gladeui/slate.h
+	<gtk/gtk.h>
+	"../cadcore/cad_gui_view.h"
+	"../cadcore/cad_gtk_adaptor.h"
+	<vector>
+
+1339853179 /home/agnel/cadview/src/cadcore/cad_gui_view.h
+	"cad_document.h"
+	"cad_cmd.h"
+	"cad_polyline_cmd.h"
+	"cad_select_cmd.h"
+	<cassert>
+	<cstdio>
+
+1339752715 /home/agnel/cadview/src/cadcore/cad_document.h
+	"cad_primitives.h"
+
+1339752715 /home/agnel/cadview/src/cadcore/cad_primitives.h
+	<vector>
+
+1339752715 /home/agnel/cadview/src/cadcore/cad_cmd.h
+	"cad_document.h"
+	<cassert>
+	<cstdio>
+	<string>
+
+1340009365 /home/agnel/cadview/src/cadcore/cad_polyline_cmd.h
+	"cad_document.h"
+	<cassert>
+	<cstdio>
+
+1339752715 /home/agnel/cadview/src/cadcore/cad_select_cmd.h
+	"cad_document.h"
+	<cassert>
+	<cstdio>
+
+1339752715 /home/agnel/cadview/src/cadcore/cad_gtk_adaptor.h
+	"gtk/gtk.h"
+	<cassert>
+	"cad_cairo_graphics.h"
+
+1339752715 /home/agnel/cadview/src/cadcore/cad_cairo_graphics.h
+	"cad_primitives.h"
+
+1339752773 source:/home/agnel/cadview/src/gladeui/slate.cpp
+	"slate.h"
+	<assert.h>
+
