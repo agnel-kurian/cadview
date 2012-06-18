@@ -112,11 +112,6 @@ public:
     even if snap is on, current_cmd is expected to display the glyph
     we might need to display co-ordinates in status bar...
     */
-    if(current_cmd != 0){
-      current_cmd->mouse_move(x, y);
-      return;
-    }
-
     if(is_panning){
       T dx = (T)x, dy = (T)y;
       graphics_type graphics(gui);
@@ -126,6 +121,11 @@ public:
       translate_y += dy - pan_start.y;
       gui.invalidate();
     }
+    else if(current_cmd != 0){
+      current_cmd->mouse_move(x, y);
+      return;
+    }
+
   /*
     otherwise...
 
@@ -184,8 +184,6 @@ public:
 //      gui.invalidate();
     }
     else if(button == Mouse_button_Middle){
-      if(in_get_point)
-        return;
       is_panning = false;
     }
     else if(button == Mouse_button_Right){
