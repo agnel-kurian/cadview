@@ -2,6 +2,7 @@
 #define CAD_GUI_VIEW_H_INCLUDED
 
 #include "cad_document.h"
+#include "cad_gui_view_input.h"
 #include "cad_cmd.h"
 #include "cad_polyline_cmd.h"
 #include "cad_select_cmd.h"
@@ -21,9 +22,6 @@ template <typename T, typename U> class cad_gui_view {
 
   U& gui;
 
-  bool in_get_point;
-  point_2d<T> get_point_point;
-
   vector< cad_cmd<T, U> > commands;
 
 public:
@@ -35,32 +33,25 @@ public:
 
   cad_polyline_cmd<T, U> polyline_cmd;
   cad_select_cmd<T, U> select_cmd;
-
-  bool get_point_cancelled;
+  cad_gui_view_input<T, U> *input;
 
   cad_gui_view(cad_document<T>& document, U& gui) :
-    translate_x(T(0.0)), translate_y(T(0.0)), scale(T(1.0)),
-    is_panning(false), pan_start(T(0.0), T(0.0)), gui(gui),
-    in_get_point(false),
-    document(document), current_cmd(0), polyline_cmd(*this),
-    select_cmd(*this), get_point_cancelled(false) {
+    translate_x(T(0.0)), translate_y(T(0.0)), scale(T(1.0)), is_panning(false),
+    pan_start(T(0.0), T(0.0)), gui(gui), document(document), current_cmd(0),
+    polyline_cmd(*this), select_cmd(*this), input(0) {
   }
 
   bool get_point(point_2d<T>& point){
-    assert(!in_get_point);
-    in_get_point = true;
-    get_point_cancelled = false;
+    assert(this->input == 0);
+    cad_gui_view_input<T, U> input1(*this);
 
-    gui.run_event_loop();
-    if(get_point_cancelled){
-      in_get_point = false;
+    input1.wait();
+
+    if(input1.is_cancelled())
       return false;
-    }
 
-    point = get_point_point;
-    in_get_point = false;
+    point = input1.get_point();
     return true;
-
   }
 
   void paint(){
@@ -156,17 +147,14 @@ public:
       if(is_panning)
         return;
 
-      if(in_get_point){
-        matrix_type mx;
-        graphics_type::set_matrix(&mx,
-          scale, translate_x, translate_y);
-        graphics_type::invert_matrix(&mx);
-        get_point_point.x = (T)x;
-        get_point_point.y = (T)y;
-        graphics_type::transform_point(&mx,
-          &get_point_point.x, &get_point_point.y);
-
-        gui.exit_event_loop();
+/*    //  coming up
+      if(mode_handler != 0){
+        mode_handler->left_mouse_up(int x, int y);
+        return;
+      }
+*/
+      if(input != 0){
+        input->left_mouse_up(x, y);
         return;
       }
       /*
@@ -187,9 +175,14 @@ public:
       is_panning = false;
     }
     else if(button == Mouse_button_Right){
-      if(in_get_point){
-        get_point_cancelled = true;
-        gui.exit_event_loop();
+/*    //  coming up
+      if(mode_handler != 0){
+        mode_handler->right_mouse_up();
+        return;
+      }
+*/
+      if(input != 0){
+        input->right_mouse_up();
         return;
       }
       /*
@@ -252,6 +245,24 @@ public:
 
   U& get_gui(){
     return gui;
+  }
+
+  void device_to_user(point_2d<T>& point){
+    matrix_type mx;
+    graphics_type::set_matrix(&mx, scale, translate_x, translate_y);
+    graphics_type::invert_matrix(&mx);
+    graphics_type::transform_point(&mx, &point.x, &point.y);
+  }
+
+  cad_gui_view_input<T, U> *get_input(){
+    return input;
+  }
+
+  void set_input(cad_gui_view_input<T, U> *input){
+    assert((this->input == 0 && input != 0)
+           || (input == 0 && this->input != 0));
+
+    this->input = input;
   }
 
 };

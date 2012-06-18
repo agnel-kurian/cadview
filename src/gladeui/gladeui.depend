@@ -2375,8 +2375,9 @@
 	"../cadcore/cad_gtk_adaptor.h"
 	<vector>
 
-1340019484 /home/agnel/cadview/src/cadcore/cad_gui_view.h
+1340027892 /home/agnel/cadview/src/cadcore/cad_gui_view.h
 	"cad_document.h"
+	"cad_gui_view_input.h"
 	"cad_cmd.h"
 	"cad_polyline_cmd.h"
 	"cad_select_cmd.h"
@@ -2416,4 +2417,7 @@
 1339752773 source:/home/agnel/cadview/src/gladeui/slate.cpp
 	"slate.h"
 	<assert.h>
+
+1340028012 /home/agnel/cadview/src/cadcore/cad_gui_view_input.h
+	<cassert>
 
