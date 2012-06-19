@@ -2,7 +2,7 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="cad_cairo_graphics.h" open="0" top="0" tabpos="5">
-		<Cursor position="244" topLine="66" />
+		<Cursor position="464" topLine="0" />
 	</File>
 	<File name="cad_cmd.h" open="0" top="0" tabpos="7">
 		<Cursor position="160" topLine="0" />
@@ -17,12 +17,12 @@
 		<Cursor position="20" topLine="0" />
 	</File>
 	<File name="cad_gtk_adaptor.h" open="1" top="0" tabpos="4">
-		<Cursor position="982" topLine="17" />
+		<Cursor position="637" topLine="0" />
 	</File>
 	<File name="cad_gui_view.h" open="1" top="0" tabpos="3">
-		<Cursor position="4467" topLine="26" />
+		<Cursor position="3779" topLine="0" />
 	</File>
-	<File name="cad_gui_view_input.h" open="1" top="1" tabpos="7">
+	<File name="cad_gui_view_input.h" open="1" top="0" tabpos="5">
 		<Cursor position="960" topLine="20" />
 	</File>
 	<File name="cad_polyline_cmd.h" open="1" top="0" tabpos="1">
