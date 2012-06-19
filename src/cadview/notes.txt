@@ -1,3 +1,5 @@
+move to a cmake based build system?
+
 win32 version
 mfc version
 Qt version??!!!
