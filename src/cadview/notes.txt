@@ -1,0 +1,61 @@
+win32 version
+mfc version
+Qt version??!!!
+.NET version
+WPF?
+Web based?!
+//must not need to create graphics object to access matrix type
+capture the mouse; clicking outside widget should cancel get_point
+
+how about having mouse/keyboard handlers for each mode. mode being one of: default, get_point, get_string, get_point_or_string
+
+keyboard input
+snap
+ortho
+dimensioning
+text
+blocks
+automation
+handles (grips)
+layers
+line styles
+line colors
+hatch
+trim
+dxf support
+
+
+// postponed: view must maintain a matrix so that graphics does not need to be used for device_to_user operation
+
+
+
+GDK_BUTTON_RELEASE_MASK works only if GDK_BUTTON_PRESS_MASK is also
+set.
+
+gdk_window_invalidate_rect will invalidate entire window if second arg
+(rect) is NULL.
+
+//expose:
+  //draw all Entities
+  //draw current entity and line to mouse location
+
+create renderer classes which can be overridden for cairo, gdi+
+
+//right click ends line
+esc will cancel current command
+enter will complete current command
+//spin mouse wheel to zoom in/out
+keyboard event
+acquiring focus
+//zoom, pan
+persistence:
+  json
+  protobuf
+  sqlite
+  postgresql
+  mysql
+
+undo queue
+copy/paste
+
+database in internal binary format

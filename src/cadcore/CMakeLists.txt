@@ -1,0 +1,1 @@
+add_library (cadcore cad_document.cpp cad_gtk_adaptor.cpp)
