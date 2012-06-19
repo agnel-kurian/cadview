@@ -147,46 +147,24 @@ public:
       if(is_panning)
         return;
 
-/*    //  coming up
-      if(mode_handler != 0){
-        mode_handler->left_mouse_up(int x, int y);
-        return;
-      }
-*/
       if(input != 0){
         input->left_mouse_up(x, y);
         return;
       }
-      /*
-      todo: when either get_point or panning is waiting for a mouse_up,
-        the other mouse_up handler must not be called. yes, i'm sure.
-      if in_get_point
-        handler->mouse_up
-        return
-      */
-//      graphics_type graphics(gui);
-//      graphics.set_matrix(scale, translate_x, translate_y);
-//      T dx = x, dy = y;
-//      graphics.device_to_user(&dx, &dy);
-//      new_polyline.points.push_back(point_2d<T>(dx, dy));
-//      gui.invalidate();
+
     }
     else if(button == Mouse_button_Middle){
       is_panning = false;
     }
     else if(button == Mouse_button_Right){
-/*    //  coming up
-      if(mode_handler != 0){
-        mode_handler->right_mouse_up();
-        return;
-      }
-*/
+
       if(input != 0){
         input->right_mouse_up();
         return;
       }
-      /*
 
+      /*
+      todo:
       if current_cmd != 0
         current_cmd->cancel();
         return;
@@ -194,18 +172,6 @@ public:
       determine context menu depending on what is under the cursor?
       display a context menu
       */
-//      int npoints = new_polyline.points.size();
-//
-//      if(npoints > 1){
-//        int ipoly = document.add_polyline(polyline_2d<T>());
-//        polyline_2d<T>& pline = document.get_polyline(ipoly);
-//        new_polyline.points.swap(pline.points);
-//        gui.invalidate();
-//      }
-//      else if(npoints == 1){
-//        new_polyline.points.clear();
-//        gui.invalidate();
-//      }
 
     }
     else
