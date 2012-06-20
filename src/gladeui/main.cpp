@@ -2,7 +2,12 @@
 #include <gtk/gtk.h>
 #include "slate.h"
 
+#include <cadview_config.h>
+
 #include <iostream>
+#include <sstream>
+
+using std::stringstream;
 
 using std::cerr;
 
@@ -50,6 +55,10 @@ int main (int argc, char *argv[])
   polyline = GTK_WIDGET(gtk_builder_get_object(builder, "polyline"));
   vbox = GTK_WIDGET(gtk_builder_get_object(builder, "vbox"));
 
+	stringstream title;
+	title << "gladeui " << CADVIEW_VERSION_MAJOR << "."
+		<< CADVIEW_VERSION_MINOR;
+	gtk_window_set_title(GTK_WINDOW(window), title.str().c_str());
   slate = gtk_slate_new();
 
   g_signal_connect(G_OBJECT(quit), "activate",
