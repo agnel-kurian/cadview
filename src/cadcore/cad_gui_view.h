@@ -43,7 +43,7 @@ public:
 
   bool get_point(point_2d<T>& point){
     assert(this->input == 0);
-    cad_gui_view_input<T, U> input1(*this);
+    cad_gui_view_input<T, U> input1(*this, Input_type_Point);
 
     input1.wait();
 
@@ -139,6 +139,26 @@ public:
       graphics.set_matrix(scale, translate_x, translate_y);
       graphics.device_to_user(&pan_start.x, &pan_start.y);
     }
+  }
+
+  void set_input_string(string str){
+    if(input != 0){
+      string err;
+      if(!input->set_input_string(str, err)){
+        //  todo: display error message
+        //  log << err;
+      }
+      gui.invalidate();
+    }
+    else
+      assert(false);
+  }
+
+  void cancel_input(){
+    if(input != 0)
+      input->cancel_input();
+    else
+      assert(false);
   }
 
   void mouse_up(Mouse_button button, int x, int y){

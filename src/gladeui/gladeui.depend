@@ -2363,11 +2363,14 @@
 	<cassert>
 	<cstdio>
 
-1339752773 source:/home/agnel/cadview/src/gladeui/main.cpp
+1340623261 source:/home/agnel/cadview/src/gladeui/main.cpp
 	<stdlib.h>
 	<gtk/gtk.h>
+	<gdk/gdkkeysyms.h>
 	"slate.h"
 	<iostream>
+	<sstream>
+	<string>
 
 1339752773 /home/agnel/cadview/src/gladeui/slate.h
 	<gtk/gtk.h>
@@ -2375,7 +2378,7 @@
 	"../cadcore/cad_gtk_adaptor.h"
 	<vector>
 
-1340032904 /home/agnel/cadview/src/cadcore/cad_gui_view.h
+1340623888 /home/agnel/cadview/src/cadcore/cad_gui_view.h
 	"cad_document.h"
 	"cad_gui_view_input.h"
 	"cad_cmd.h"
@@ -2418,6 +2421,20 @@
 	"slate.h"
 	<assert.h>
 
-1340028012 /home/agnel/cadview/src/cadcore/cad_gui_view_input.h
+1340624045 /home/agnel/cadview/src/cadcore/cad_gui_view_input.h
 	<cassert>
+	<string>
+	"util.h"
+
+1340555791 /home/agnel/cadview/src/cadcore/util.h
+	<string>
+	<cstdlib>
+	<cassert>
+	"cad_primitives.h"
+	<boost/regex.hpp>
+
+1323698641 /usr/include/gtk-2.0/gdk/gdkkeysyms.h
+	<gdk/gdkkeysyms-compat.h>
+
+1323698641 /usr/include/gtk-2.0/gdk/gdkkeysyms-compat.h
 

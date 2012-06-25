@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="cad_cairo_graphics.h" open="0" top="0" tabpos="5">
-		<Cursor position="464" topLine="0" />
+	<File name="cad_cairo_graphics.h" open="1" top="0" tabpos="3">
+		<Cursor position="418" topLine="3" />
 	</File>
 	<File name="cad_cmd.h" open="0" top="0" tabpos="7">
 		<Cursor position="160" topLine="0" />
@@ -16,20 +16,20 @@
 	<File name="cad_gtk_adaptor.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="20" topLine="0" />
 	</File>
-	<File name="cad_gtk_adaptor.h" open="1" top="0" tabpos="4">
-		<Cursor position="637" topLine="0" />
+	<File name="cad_gtk_adaptor.h" open="1" top="0" tabpos="7">
+		<Cursor position="387" topLine="9" />
 	</File>
-	<File name="cad_gui_view.h" open="1" top="0" tabpos="3">
-		<Cursor position="3779" topLine="0" />
+	<File name="cad_gui_view.h" open="1" top="0" tabpos="2">
+		<Cursor position="3396" topLine="129" />
 	</File>
-	<File name="cad_gui_view_input.h" open="1" top="0" tabpos="5">
-		<Cursor position="960" topLine="20" />
+	<File name="cad_gui_view_input.h" open="1" top="1" tabpos="8">
+		<Cursor position="2017" topLine="64" />
 	</File>
-	<File name="cad_polyline_cmd.h" open="1" top="0" tabpos="1">
-		<Cursor position="1182" topLine="29" />
+	<File name="cad_polyline_cmd.h" open="0" top="0" tabpos="1">
+		<Cursor position="872" topLine="17" />
 	</File>
-	<File name="cad_primitives.h" open="1" top="0" tabpos="2">
-		<Cursor position="1677" topLine="40" />
+	<File name="cad_primitives.h" open="1" top="0" tabpos="1">
+		<Cursor position="1664" topLine="46" />
 	</File>
 	<File name="cad_select_cmd.h" open="0" top="0" tabpos="0">
 		<Cursor position="267" topLine="0" />
