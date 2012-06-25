@@ -2399,7 +2399,7 @@
 1339752715 /home/agnel/cadview/src/cadcore/cad_document.h
 	"cad_primitives.h"
 
-1340026885 /home/agnel/cadview/src/cadcore/cad_gui_view.h
+1340596159 /home/agnel/cadview/src/cadcore/cad_gui_view.h
 	"cad_document.h"
 	"cad_gui_view_input.h"
 	"cad_cmd.h"
@@ -2408,8 +2408,10 @@
 	<cassert>
 	<cstdio>
 
-1340026956 /home/agnel/cadview/src/cadcore/cad_gui_view_input.h
+1340596143 /home/agnel/cadview/src/cadcore/cad_gui_view_input.h
 	<cassert>
+	<string>
+	"util.h"
 
 1339752715 /home/agnel/cadview/src/cadcore/cad_cmd.h
 	"cad_document.h"
@@ -2439,4 +2441,11 @@
 	"cad_gtk_adaptor.h"
 	"cad_cairo_graphics.h"
 	"gtk/gtk.h"
+
+1340555791 /home/agnel/cadview/src/cadcore/util.h
+	<string>
+	<cstdlib>
+	<cassert>
+	"cad_primitives.h"
+	<boost/regex.hpp>
 

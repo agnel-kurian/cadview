@@ -87,7 +87,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label1">
+          <object class="GtkLabel" id="prompt">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Select a point:</property>
@@ -100,7 +100,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEntry" id="entry1">
+          <object class="GtkEntry" id="cmd_line">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="invisible_char">●</property>
@@ -112,7 +112,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkTextView" id="textview2">
+          <object class="GtkTextView" id="cmd_log">
             <property name="height_request">60</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>

@@ -1,12 +1,17 @@
 #include <stdlib.h>
 #include <gtk/gtk.h>
+
+#include <gdk/gdkkeysyms.h>
+
 #include "slate.h"
 
-#include <cadview_config.h>
+//  #include <cadview_config.h>
 
 #include <iostream>
 #include <sstream>
+#include <string>
 
+using std::string;
 using std::stringstream;
 
 using std::cerr;
@@ -33,6 +38,28 @@ void menu_file_polyline(GtkMenuItem *menuitem, gpointer user_data){
 
 }
 
+gboolean cmd_line_key_release(GtkWidget *widget, GdkEventKey *event,
+  gpointer user_data){
+
+  cad_core::cad_gui_view<double,
+    cad_core::cad_gtk_adaptor<double> > *view =
+    (cad_core::cad_gui_view<double,
+      cad_core::cad_gtk_adaptor<double> >*) user_data;
+
+  if(event->keyval == GDK_KEY_Escape){
+    view->cancel_input();
+  }
+  else if(event->keyval == GDK_KEY_Return){
+    GtkEntry *cmd_line = GTK_ENTRY(widget);
+    GtkEntryBuffer *buffer = gtk_entry_get_buffer(cmd_line);
+    string input(gtk_entry_buffer_get_text(buffer));
+    view->set_input_string(input);
+    gtk_entry_buffer_set_text(buffer, "", -1);
+  }
+
+  return FALSE;
+}
+
 int main (int argc, char *argv[])
 {
   GtkBuilder *builder;
@@ -42,6 +69,7 @@ int main (int argc, char *argv[])
   GtkWidget *polyline;
   GtkWidget *slate;
   GtkWidget *vbox;
+  GtkWidget *cmd_line;
 
   gtk_init (&argc, &argv);
 
@@ -54,12 +82,13 @@ int main (int argc, char *argv[])
   select = GTK_WIDGET(gtk_builder_get_object(builder, "select"));
   polyline = GTK_WIDGET(gtk_builder_get_object(builder, "polyline"));
   vbox = GTK_WIDGET(gtk_builder_get_object(builder, "vbox"));
+  cmd_line = GTK_WIDGET(gtk_builder_get_object(builder, "cmd_line"));
 
-	stringstream title;
+/*	stringstream title;
 	title << "gladeui " << CADVIEW_VERSION_MAJOR << "."
 		<< CADVIEW_VERSION_MINOR;
 	gtk_window_set_title(GTK_WINDOW(window), title.str().c_str());
-  slate = gtk_slate_new();
+*/  slate = gtk_slate_new();
 
   g_signal_connect(G_OBJECT(quit), "activate",
     G_CALLBACK(menu_file_quit), NULL);
@@ -75,7 +104,11 @@ int main (int argc, char *argv[])
   g_signal_connect(G_OBJECT(polyline), "activate",
     G_CALLBACK(menu_file_polyline), &view);
 
-  GtkWidget *placeholder = GTK_WIDGET(gtk_builder_get_object(builder, "placeholder"));
+  g_signal_connect(G_OBJECT(cmd_line), "key-release-event",
+    G_CALLBACK(cmd_line_key_release), &view);
+
+  GtkWidget *placeholder =
+    GTK_WIDGET(gtk_builder_get_object(builder, "placeholder"));
   gtk_container_remove(GTK_CONTAINER(vbox), GTK_WIDGET(placeholder));
 
   gtk_box_pack_start(GTK_BOX(vbox), slate, TRUE, TRUE, 0);
