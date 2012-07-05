@@ -11,19 +11,13 @@ configure_file (
 
 include_directories ("${PROJECT_BINARY_DIR}")
 
-find_package(GTK2 2.8 COMPONENTS gtk)
+find_package(GTK2 2.8 REQUIRED gtk)
+find_package(Boost 1.47 REQUIRED regex)
 
+include_directories(${GTK2_INCLUDE_DIRS})
 
-if(GTK2_FOUND)
-  include_directories(${GTK2_INCLUDE_DIRS})
+add_subdirectory (cadcore)
+add_subdirectory (cadview)
+add_subdirectory (gladeui)
+add_subdirectory (gtklab)
 
-  add_subdirectory (cadcore)
-  add_subdirectory (cadview)
-  add_subdirectory (gladeui)
-  add_subdirectory (gtklab)
-
-endif()
-
-
-# add_executable(gladeui gladeui/main.cpp)
-# target_link_libraries (gladeui gtk+-2.0) 
