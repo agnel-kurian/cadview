@@ -1,4 +1,9 @@
-move to a cmake based build system?
+remove 'cad' prefix from all file names
+use entity base class
+pass pen as argument. this way, when painting selected objects, we only create dashed pen one time and pass it.
+add selected flag to entity
+
+move to a cmake based build system? done :)
 
 win32 version
 mfc version

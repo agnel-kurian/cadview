@@ -92,7 +92,6 @@ gtk_slate_realize (GtkWidget *widget)
         GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_SCROLL_MASK;
 
       attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL | GDK_WA_COLORMAP;
-
       widget->window = gdk_window_new (gtk_widget_get_parent_window (widget),
                                        &attributes, attributes_mask);
       gdk_window_set_user_data (widget->window, slate);

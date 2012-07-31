@@ -14,6 +14,9 @@
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
+				<Linker>
+					<Add option="`pkg-config gtk+-2.0 --libs` -lboost_regex" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/cadview" prefix_auto="1" extension_auto="1" />

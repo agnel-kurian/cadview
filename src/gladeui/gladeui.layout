@@ -4,10 +4,13 @@
 	<File name="cadview.glade" open="0" top="0" tabpos="0">
 		<Cursor position="2318" topLine="19" />
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="0">
-		<Cursor position="1219" topLine="42" />
+	<File name="main.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="2847" topLine="76" />
 	</File>
-	<File name="slate.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="6023" topLine="170" />
+	<File name="slate.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="2269" topLine="66" />
+	</File>
+	<File name="slate.h" open="1" top="0" tabpos="3">
+		<Cursor position="219" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>
