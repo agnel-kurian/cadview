@@ -14,6 +14,7 @@
 //  vector< polyline_2d<T> > lines;
 //};
 
+
 G_BEGIN_DECLS
 
 #define GTK_TYPE_SLATE            (gtk_slate_get_type ())
@@ -35,6 +36,8 @@ using std::vector;
 
 typedef cad_core::cad_gui_view<double,
     cad_core::cad_gtk_adaptor<double> > view_type;
+
+cad_core::Mouse_button Mouse_button_from_Gtk(guint gtk_mouse_button);
 
 struct _GtkSlate
 {
