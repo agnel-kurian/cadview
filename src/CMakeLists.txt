@@ -17,7 +17,9 @@ find_package(Boost 1.47 REQUIRED regex)
 include_directories(${GTK2_INCLUDE_DIRS})
 
 add_subdirectory (cadcore)
-add_subdirectory (cadview)
-add_subdirectory (gladeui)
-add_subdirectory (gtklab)
 
+IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+  add_subdirectory (cadview)
+  add_subdirectory (gladeui)
+  add_subdirectory (gtklab)
+ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
