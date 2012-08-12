@@ -16,11 +16,15 @@ include_directories ("${PROJECT_BINARY_DIR}")
 find_package(GTK2 2.8 REQUIRED gtk)
 include_directories(${GTK2_INCLUDE_DIRS})
 message(STATUS "GTK2_INCLUDE_DIRS = ${GTK2_INCLUDE_DIRS}")
+message(STATUS "GTK2_LIBRARIES = ${GTK2_LIBRARIES}")
   
-
+set(Boost_USE_STATIC_LIBS        OFF)
+set(Boost_USE_MULTITHREADED      ON)
+set(Boost_USE_STATIC_RUNTIME    OFF)
 find_package(Boost 1.47 REQUIRED regex)
 include_directories(${Boost_INCLUDE_DIRS})
 message(STATUS "Boost_INCLUDE_DIRS = ${Boost_INCLUDE_DIRS}")
+message(STATUS "Boost_LIBRARIES = ${Boost_LIBRARIES}")
 
 add_subdirectory (cadcore)
 
