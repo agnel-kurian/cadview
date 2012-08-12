@@ -27,9 +27,6 @@ message(STATUS "Boost_INCLUDE_DIRS = ${Boost_INCLUDE_DIRS}")
 message(STATUS "Boost_LIBRARIES = ${Boost_LIBRARIES}")
 
 add_subdirectory (cadcore)
-
-IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-  add_subdirectory (cadview)
-  add_subdirectory (gladeui)
-  add_subdirectory (gtklab)
-ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+add_subdirectory (cadview)
+add_subdirectory (gladeui)
+add_subdirectory (gtklab)
