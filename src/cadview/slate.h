@@ -4,8 +4,8 @@
 
 #include <gtk/gtk.h>
 
-#include "../cadcore/cad_gui_view.h"
-#include "../cadcore/cad_gtk_adaptor.h"
+#include "cad_gui_view.h"
+#include "cad_gtk_adaptor.h"
 
 #include <vector>
 
