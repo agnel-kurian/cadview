@@ -6,7 +6,7 @@
 
 #include "cad_cairo_graphics.h"
 
-namespace cad_core {
+namespace cad_gtk {
 
 template<typename T> class cad_cairo_graphics;
 
