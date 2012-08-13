@@ -3,7 +3,7 @@
 
 #include "cad_primitives.h"
 
-namespace cad_core {
+namespace cad_gtk {
 
 template<typename T> class cad_gtk_adaptor;
 

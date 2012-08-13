@@ -4,7 +4,7 @@
 #include "gtk/gtk.h"
 
 
-namespace cad_core {
+namespace cad_gtk {
 
 
 

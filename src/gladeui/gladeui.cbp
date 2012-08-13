@@ -31,6 +31,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="`pkg-config gtk+-2.0 --cflags`" />
+			<Add directory="../cadcore" />
+			<Add directory="../cadgtk" />
 		</Compiler>
 		<Linker>
 			<Add option="`pkg-config gtk+-2.0 --libs` -lboost_regex" />
