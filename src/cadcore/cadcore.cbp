@@ -35,24 +35,19 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="-fexceptions `pkg-config --cflags gtk+-2.0`" />
+			<Add option="-fexceptions" />
 		</Compiler>
 		<Linker>
 			<Add option="-lboost_regex" />
 		</Linker>
-		<Unit filename="cad_action.h" />
-		<Unit filename="cad_cairo_graphics.h" />
 		<Unit filename="cad_cmd.h" />
 		<Unit filename="cad_document.cpp" />
 		<Unit filename="cad_document.h" />
-		<Unit filename="cad_gtk_adaptor.cpp" />
-		<Unit filename="cad_gtk_adaptor.h" />
 		<Unit filename="cad_gui_view.h" />
 		<Unit filename="cad_gui_view_input.h" />
 		<Unit filename="cad_polyline_cmd.h" />
 		<Unit filename="cad_primitives.h" />
 		<Unit filename="cad_select_cmd.h" />
-		<Unit filename="cad_selection.h" />
 		<Unit filename="util.h" />
 		<Extensions>
 			<code_completion />
