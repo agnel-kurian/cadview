@@ -31,10 +31,10 @@ gboolean get_point_button_press(GtkWidget* widget, GdkEvent *event,
 }
 
 struct point_2d getpoint(GtkWidget *widget){
+  struct get_point_data data;
   gchar* old_title = g_strdup(gtk_window_get_title(GTK_WINDOW(widget)));
   gtk_window_set_title (GTK_WINDOW (widget), "Select a point:");
   fprintf(stderr, "in getpoint\n");
-  struct get_point_data data;
   data.button_press_handler_id =
     g_signal_connect(G_OBJECT(widget), "button-press-event",
       G_CALLBACK(get_point_button_press), &data);
@@ -57,9 +57,15 @@ struct point_2d getpoint(GtkWidget *widget){
 
 int main (int argc, char *argv[])
 {
-  fprintf(stderr, "in main\n");
   GtkWidget *win = NULL;
   GtkWidget *vbox = NULL;
+  GtkWidget *menubar = gtk_menu_bar_new();
+  GtkWidget *filemenu = gtk_menu_new();
+  GtkWidget *file = gtk_menu_item_new_with_mnemonic("_File");
+  GtkWidget *pick = gtk_menu_item_new_with_mnemonic("_Pick a point...");
+  GtkWidget *quit = gtk_menu_item_new_with_mnemonic("_Quit");
+
+  fprintf(stderr, "in main\n");
 
   /* Initialize GTK+ */
   g_log_set_handler ("Gtk", G_LOG_LEVEL_WARNING, (GLogFunc) gtk_false, NULL);
@@ -77,13 +83,8 @@ int main (int argc, char *argv[])
   vbox = gtk_vbox_new(FALSE, 0);
   gtk_container_add(GTK_CONTAINER(win), vbox);
 
-  GtkWidget *menubar = gtk_menu_bar_new();
-  GtkWidget *filemenu = gtk_menu_new();
-  GtkWidget *file = gtk_menu_item_new_with_mnemonic("_File");
-  GtkWidget *pick = gtk_menu_item_new_with_mnemonic("_Pick a point...");
   g_signal_connect(G_OBJECT(pick), "activate",
     G_CALLBACK(menu_file_pick), win);
-  GtkWidget *quit = gtk_menu_item_new_with_mnemonic("_Quit");
   g_signal_connect(G_OBJECT(quit), "activate",
     G_CALLBACK(menu_file_quit), NULL);
   gtk_menu_item_set_submenu(GTK_MENU_ITEM(file), filemenu);
