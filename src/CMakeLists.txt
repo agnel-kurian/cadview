@@ -22,15 +22,19 @@ message(STATUS "Boost_INCLUDE_DIRS = ${Boost_INCLUDE_DIRS}")
 message(STATUS "Boost_LIBRARIES = ${Boost_LIBRARIES}")
 
 add_subdirectory (cadcore)
+include_directories (cadcore)
 
-find_package(GTK2 2.8 gtk)
+find_package(GTK2 2.8 COMPONENTS gtk)
 
 if(GTK2_FOUND)
   include_directories(${GTK2_INCLUDE_DIRS})
+  add_subdirectory (cadgtk)
+  include_directories (cadgtk)
+
   message(STATUS "GTK2_INCLUDE_DIRS = ${GTK2_INCLUDE_DIRS}")
   message(STATUS "GTK2_LIBRARIES = ${GTK2_LIBRARIES}")
 
+  add_subdirectory (gtklab)
   add_subdirectory (cadview)
   add_subdirectory (gladeui)
-  add_subdirectory (gtklab)
 endif()

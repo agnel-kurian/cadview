@@ -35,7 +35,7 @@ using cad_core::point_2d;
 using std::vector;
 
 typedef cad_core::cad_gui_view<double,
-    cad_core::cad_gtk_adaptor<double> > view_type;
+    cad_gtk::cad_gtk_adaptor<double> > view_type;
 
 cad_core::Mouse_button Mouse_button_from_Gtk(guint gtk_mouse_button);
 

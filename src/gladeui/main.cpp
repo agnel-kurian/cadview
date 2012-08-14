@@ -23,17 +23,17 @@ void menu_file_quit(GtkMenuItem *menuitem, gpointer user_data){
 
 void menu_file_select(GtkMenuItem *menuitem, gpointer user_data){
   cad_core::cad_gui_view<double,
-    cad_core::cad_gtk_adaptor<double> > *view =
+    cad_gtk::cad_gtk_adaptor<double> > *view =
     (cad_core::cad_gui_view<double,
-      cad_core::cad_gtk_adaptor<double> >*) user_data;
+      cad_gtk::cad_gtk_adaptor<double> >*) user_data;
   view->run_select_cmd();
 }
 
 void menu_file_polyline(GtkMenuItem *menuitem, gpointer user_data){
   cad_core::cad_gui_view<double,
-    cad_core::cad_gtk_adaptor<double> > *view =
+    cad_gtk::cad_gtk_adaptor<double> > *view =
     (cad_core::cad_gui_view<double,
-      cad_core::cad_gtk_adaptor<double> >*) user_data;
+      cad_gtk::cad_gtk_adaptor<double> >*) user_data;
   view->run_polyline_cmd();
 
 }
@@ -42,9 +42,9 @@ gboolean cmd_line_key_release(GtkWidget *widget, GdkEventKey *event,
   gpointer user_data){
 
   cad_core::cad_gui_view<double,
-    cad_core::cad_gtk_adaptor<double> > *view =
+    cad_gtk::cad_gtk_adaptor<double> > *view =
     (cad_core::cad_gui_view<double,
-      cad_core::cad_gtk_adaptor<double> >*) user_data;
+      cad_gtk::cad_gtk_adaptor<double> >*) user_data;
 
   if(event->keyval == GDK_KEY_Escape){
     view->cancel_input();
@@ -94,9 +94,9 @@ int main (int argc, char *argv[])
     G_CALLBACK(menu_file_quit), NULL);
 
   cad_core::cad_document<double> document;
-  cad_core::cad_gtk_adaptor<double> gui(slate);
+  cad_gtk::cad_gtk_adaptor<double> gui(slate);
   cad_core::cad_gui_view<double,
-    cad_core::cad_gtk_adaptor<double> > view(document, gui);
+    cad_gtk::cad_gtk_adaptor<double> > view(document, gui);
   gtk_slate_set_view(slate, &view);
 
   g_signal_connect(G_OBJECT(select), "activate",

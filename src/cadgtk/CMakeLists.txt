@@ -1,3 +1,3 @@
-add_library (cadcore cad_document.cpp cad_gtk_adaptor.cpp)
-target_link_libraries (cadcore ${GTK2_LIBRARIES})
-target_link_libraries (cadcore ${Boost_LIBRARIES})
+add_library (cadgtk cad_gtk_adaptor.cpp)
+target_link_libraries (cadgtk ${GTK2_LIBRARIES})
+target_link_libraries (cadgtk ${Boost_LIBRARIES})

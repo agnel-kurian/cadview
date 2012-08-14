@@ -3,7 +3,12 @@
 
 #include "cad_primitives.h"
 
+#include <vector>
+
 namespace cad_gtk {
+
+using cad_core::point_2d;
+using cad_core::polyline_2d;
 
 template<typename T> class cad_gtk_adaptor;
 
@@ -49,7 +54,7 @@ public:
   }
 
   void draw_polyline(const polyline_2d<T>& polyline){
-    const vector< point_2d<T> >& points = polyline.points;
+    const std::vector< point_2d<T> >& points = polyline.points;
     move_to(points[0]);
 
     for(int ipoint = 1, npoint = points.size();

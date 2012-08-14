@@ -12,7 +12,7 @@ gboolean cadview_mouse_release(GtkWidget *widget, GdkEventButton *event,
   cad_core::Mouse_button button = Mouse_button_from_Gtk(event->button);
   GtkSlate *slate = GTK_SLATE(widget);
   cad_core::cad_gui_view<double,
-    cad_core::cad_gtk_adaptor<double> >& view = *(slate->view);
+    cad_gtk::cad_gtk_adaptor<double> >& view = *(slate->view);
   if(view.get_input() != 0)
     return FALSE;
 
@@ -61,9 +61,9 @@ int main(int argc, char *argv[]){
     G_CALLBACK(cadview_mouse_release), 0);
 
   cad_core::cad_document<double> document;
-  cad_core::cad_gtk_adaptor<double> gui(slate);
+  cad_gtk::cad_gtk_adaptor<double> gui(slate);
   cad_core::cad_gui_view<double,
-    cad_core::cad_gtk_adaptor<double> > view(document, gui);
+    cad_gtk::cad_gtk_adaptor<double> > view(document, gui);
   gtk_slate_set_view(slate, &view);
 
   gtk_widget_show_all(window);
