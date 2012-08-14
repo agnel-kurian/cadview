@@ -1,0 +1,9 @@
+syntax: glob
+
+*.layout
+*.depend
+**/bin
+**/obj
+**/*.orig
+obj/*
+build/*

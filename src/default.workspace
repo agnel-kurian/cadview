@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Workspace">
+		<Project filename="cadcore/cadcore.cbp" />
+		<Project filename="cadview/cadview.cbp" active="1" />
+		<Project filename="gtklab/gtklab.cbp" />
+		<Project filename="gladeui/gladeui.cbp" />
+		<Project filename="cadgtk/cadgtk.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>
