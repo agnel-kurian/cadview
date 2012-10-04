@@ -1,3 +1,4 @@
+message(STATUS "gladeui output directory is ${CMAKE_CURRENT_BINARY_DIR}")
 add_executable (gladeui main.cpp slate.cpp)
 target_link_libraries (gladeui ${GTK2_LIBRARIES})
 target_link_libraries (gladeui ${Boost_LIBRARIES})

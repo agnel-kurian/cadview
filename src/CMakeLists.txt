@@ -13,6 +13,7 @@ configure_file (
 
 include_directories ("${PROJECT_BINARY_DIR}")
 
+set(Boost_ADDITIONAL_VERSIONS "1.50" "1.50.0")
 set(Boost_USE_STATIC_LIBS        OFF)
 set(Boost_USE_MULTITHREADED      ON)
 set(Boost_USE_STATIC_RUNTIME    OFF)
@@ -27,6 +28,7 @@ include_directories (cadcore)
 find_package(GTK2 2.8 COMPONENTS gtk)
 
 if(GTK2_FOUND)
+  message(STATUS "GTK+-2.0 was found.")
   include_directories(${GTK2_INCLUDE_DIRS})
   add_subdirectory (cadgtk)
   include_directories (cadgtk)
@@ -37,4 +39,6 @@ if(GTK2_FOUND)
   add_subdirectory (gtklab)
   add_subdirectory (cadview)
   add_subdirectory (gladeui)
-endif()
+else(GTK2_FOUND)
+  message(STATUS "GTK+-2.0 was not found.")
+endif(GTK2_FOUND)

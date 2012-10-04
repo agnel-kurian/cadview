@@ -164,8 +164,8 @@ gtk_slate_motion_notify(GtkWidget        *widget,
   if(event->is_hint)
     gdk_window_get_pointer(widget->window, &x, &y, &mods);
   else {
-    x = event->x;
-    y = event->y;
+    x = (gint) event->x;
+    y = (gint) event->y;
   }
 
   slate->view->mouse_move(x, y);
@@ -186,7 +186,7 @@ gboolean gtk_slate_button_press (GtkWidget	     *widget,
          GdkEventButton      *event){
   GtkSlate *slate = GTK_SLATE(widget);
   cad_core::Mouse_button button = Mouse_button_from_Gtk(event->button);
-  slate->view->mouse_down(button, event->x, event->y);
+  slate->view->mouse_down(button, (int)event->x, (int)event->y);
 
   return TRUE;
 }
@@ -196,7 +196,7 @@ gboolean gtk_slate_button_release (GtkWidget	     *widget,
 
   GtkSlate *slate = GTK_SLATE(widget);
   cad_core::Mouse_button button = Mouse_button_from_Gtk(event->button);
-  slate->view->mouse_up(button, event->x, event->y);
+  slate->view->mouse_up(button, (int)event->x, (int)event->y);
 
   return TRUE;
 }
@@ -221,7 +221,7 @@ gboolean gtk_slate_scroll_event(GtkWidget           *widget,
   GtkSlate *slate = GTK_SLATE(widget);
   slate->view->mouse_scroll(
     Mouse_scroll_direction_from_Gtk(event->direction),
-    event->x, event->y);
+    (int)event->x, (int)event->y);
 
   return FALSE;
 }

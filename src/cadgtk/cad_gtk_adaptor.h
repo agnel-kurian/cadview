@@ -18,16 +18,6 @@ public:
   cad_gtk_adaptor(GtkWidget *widget) : widget(widget){
   }
 
-  int get_width(){
-    assert(false);
-    return 0;
-  }
-
-  int get_height(){
-    assert(false);
-    return 0;
-  }
-
   void create_graphics(graphics_type *graphics){
     cairo_t *cr;
     cr = gdk_cairo_create(widget->window);
