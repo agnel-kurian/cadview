@@ -4,14 +4,14 @@
 
 namespace cad_core {
 
-template class point_2d<float>;
-template class line_2d<float>;
-template class polyline_2d<float>;
+template struct point_2d<float>;
+template struct line_2d<float>;
+template struct polyline_2d<float>;
 template class cad_document<float>;
 
-template class point_2d<double>;
-template class line_2d<double>;
-template class polyline_2d<double>;
+template struct point_2d<double>;
+template struct line_2d<double>;
+template struct polyline_2d<double>;
 template class cad_document<double>;
 
 }
