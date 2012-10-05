@@ -6,6 +6,9 @@
 #include "CadWnd.h"
 #include "App0/app0_exception.h"
 
+using App0::RegisterDefWndClass;
+using cadwin::CadWnd;
+
 #define MAX_LOADSTRING 100
 
 TCHAR* APP_CAPTION = _T("App0");
@@ -18,7 +21,8 @@ try {
   UNREFERENCED_PARAMETER(hPrevInstance);
   UNREFERENCED_PARAMETER(lpCmdLine);
 
-  cadwin::CadWnd window;
+  RegisterDefWndClass(CadWnd::CLASS_NAME);
+  CadWnd window;
 
   MSG msg;
 //	HACCEL hAccelTable;
