@@ -71,8 +71,8 @@ public:
     *y = (T)dy;
   }
 
-  static void set_matrix(cairo_matrix_t *mx,
-    double scale, double translate_x, double translate_y){
+  static void set_matrix(matrix_type *mx, T scale,
+    T translate_x, T translate_y){
 
     cairo_matrix_init_identity(mx);
     cairo_matrix_scale(mx, scale, scale);
@@ -80,11 +80,11 @@ public:
 
   }
 
-  static void invert_matrix(cairo_matrix_t *mx){
+  static void invert_matrix(matrix_type *mx){
     cairo_matrix_invert(mx);
   }
 
-  static void transform_point(const cairo_matrix_t *mx, T* x, T* y){
+  static void transform_point(const matrix_type *mx, T* x, T* y){
     double dx = *x;
     double dy = *y;
 
@@ -95,7 +95,7 @@ public:
 
   }
 
-  static void transform_point(const cairo_matrix_t *mx, point_2d<T>* p){
+  static void transform_point(const matrix_type *mx, point_2d<T>* p){
     transform_point(mx, &p->x, &p->y);
   }
 
