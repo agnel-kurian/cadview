@@ -1,9 +1,17 @@
-syntax: glob
+syntax: regexp
 
-*.layout
-*.depend
-**/bin
-**/obj
-**/*.orig
-obj/*
-build/*
+^build$
+/bin$
+/obj$
+/Debug$
+/ipch$
+.*\.layout$
+.*\.depend$
+.*\.orig$
+.*\.opensdf$
+.*\.sdf$
+.*\.suo$
+.*\.vcxproj.filters$
+.*\.vcxproj.user$
+.*\.swp$
+

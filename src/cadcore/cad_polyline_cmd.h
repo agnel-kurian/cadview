@@ -32,7 +32,7 @@ public:
       point_2d<T>& plast = points.back();
       graphics.move_to(plast.x, plast.y);
       int x, y;
-      gui.get_mouse_position(&x, &y);
+      gui.get_mouse_position(x, y);
       T dx = (T)x, dy = (T)y;
       graphics.device_to_user(&dx, &dy);
       graphics.line_to(dx, dy);

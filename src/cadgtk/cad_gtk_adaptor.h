@@ -18,16 +18,9 @@ public:
   cad_gtk_adaptor(GtkWidget *widget) : widget(widget){
   }
 
-  void create_graphics(graphics_type *graphics){
-    cairo_t *cr;
-    cr = gdk_cairo_create(widget->window);
-    cad_cairo_graphics<T> gr(cr);
-    *graphics = gr;
-  }
-
-  void get_mouse_position(int *x, int *y){
+  void get_mouse_position(int &x, int &y){
     GdkModifierType mods;
-    gdk_window_get_pointer(widget->window, x, y, &mods);
+    gdk_window_get_pointer(widget->window, &x, &y, &mods);
   }
 
   GtkWidget* get_widget(){
