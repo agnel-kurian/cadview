@@ -21,3 +21,9 @@
 // TODO: reference additional headers your program requires here
 #include <WindowsX.h>
 
+#include <cassert>
+#include <boost/format.hpp>
+
+typedef boost::basic_format<TCHAR> tformat;
+
+#include <comdef.h>
