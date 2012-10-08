@@ -27,3 +27,4 @@
 typedef boost::basic_format<TCHAR> tformat;
 
 #include <comdef.h>
+#include <gdiplus.h>

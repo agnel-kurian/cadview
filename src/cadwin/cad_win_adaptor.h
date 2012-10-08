@@ -3,10 +3,35 @@
 
 #include <Windows.h>
 #include <cassert>
+#include "cad_exception.h"
 
 #include "cad_gdiplus_adaptor.h"
 
 namespace cad_win {
+
+using cad_core::cad_exception;
+
+class TmpDC {
+  HDC hdc;
+  HWND hwnd;
+
+public:
+  TmpDC(HWND hwnd) : hwnd(hwnd) {
+    hdc = ::GetDC(hwnd);
+    if(hdc == 0)
+      throw cad_exception("GetDC failed");
+  }
+
+  operator HDC(){
+    return hdc;
+  }
+
+  ~TmpDC(){
+    ::ReleaseDC(hwnd, hdc);
+  }
+
+};
+
 
 template<typename T> class cad_win_graphics;
 
@@ -37,6 +62,8 @@ public:
   bool loop;
   void run_event_loop(){
     loop = true;
+
+    MSG msg;
 
     while (loop && GetMessage(&msg, NULL, 0, 0))
     {

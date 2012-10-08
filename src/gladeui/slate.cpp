@@ -128,8 +128,8 @@ gtk_slate_expose(GtkWidget *widget,
     GdkEventExpose *event)
 {
   GtkSlate *slate = GTK_SLATE(widget);
-
-  slate->view->paint();
+  view_type::graphics_type graphics(slate->view->get_gui());
+  slate->view->paint(graphics);
 
   return FALSE;
 }

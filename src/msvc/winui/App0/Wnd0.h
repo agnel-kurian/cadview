@@ -47,6 +47,7 @@ namespace App0 {
 
     void Destroy();
     virtual ~Wnd0();
+    operator HWND();
 
     HWND GetHandle() const { return hwnd; }
 

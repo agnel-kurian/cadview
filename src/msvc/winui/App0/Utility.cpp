@@ -1,8 +1,12 @@
 #include "stdafx.h"
 
 #include "Utility.h"
+#include "app0_exception.h"
 
 namespace App0 {
+
+TCHAR* ERR_GetDC_FAILED = _T("GetDC failed");
+
 
 void LogLastError(){
   _com_error error(GetLastError());
@@ -35,5 +39,38 @@ bool IsVistaOrLater(){
   return osver.dwMajorVersion >= 6;
 }
 
+TmpDC::TmpDC(HWND hwnd) : hwnd(hwnd) {
+  hdc = ::GetDC(hwnd);
+  if(hdc == 0)
+    throw app0_exception(ERR_GetDC_FAILED);
+}
+
+TmpDC::operator HDC(){
+  return hdc;
+}
+
+TmpDC::~TmpDC(){
+  ::ReleaseDC(hwnd, hdc);
+}
+
+int GetTextHeight(HWND hwnd){
+  TmpDC dc(hwnd);
+
+  TEXTMETRIC tm;
+  if(!GetTextMetrics(dc, &tm))
+    return 0;
+
+  ::ReleaseDC(hwnd, dc);
+
+  return tm.tmExternalLeading + tm.tmHeight;
+}
+
+InitGdiplus::InitGdiplus(){
+  Gdiplus::GdiplusStartup(&token, &sin, &sout);
+}
+
+InitGdiplus::~InitGdiplus(){
+  Gdiplus::GdiplusShutdown(token);
+}
 
 }

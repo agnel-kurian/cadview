@@ -54,9 +54,8 @@ public:
     return true;
   }
 
-  void paint(){
+  void paint(graphics_type& graphics){
 
-    graphics_type graphics(gui);
     graphics.begin_paint(scale, translate_x, translate_y);
 
     const vector< polyline_2d<T> >& lines =
@@ -105,6 +104,7 @@ public:
     */
     if(is_panning){
       T dx = (T)x, dy = (T)y;
+
       graphics_type graphics(gui);
       graphics.set_matrix(scale, translate_x, translate_y);
       graphics.device_to_user(&dx, &dy);
