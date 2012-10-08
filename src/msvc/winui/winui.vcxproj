@@ -76,7 +76,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App0\app0_exception.cpp" />
+    <ClCompile Include="App0\Utility.cpp" />
     <ClCompile Include="App0\Wnd0.cpp" />
+    <ClCompile Include="CadWnd.cpp" />
+    <ClCompile Include="CmdLineWnd.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainWnd.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -84,9 +87,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="App0\App0.h" />
     <ClInclude Include="App0\app0_exception.h" />
+    <ClInclude Include="App0\Utility.h" />
     <ClInclude Include="App0\Wnd0.h" />
+    <ClInclude Include="CadWnd.h" />
+    <ClInclude Include="CmdLineWnd.h" />
     <ClInclude Include="MainWnd.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />

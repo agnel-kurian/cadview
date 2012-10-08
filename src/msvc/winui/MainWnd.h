@@ -1,5 +1,5 @@
-#ifndef CAD_WND_INCLUDED
-#define CAD_WND_INCLUDED
+#ifndef MAINWND_INCLUDED
+#define MAINWND_INCLUDED
 
 #include "App0/Wnd0.h"
 #include "cad_gui_view.h"
@@ -17,6 +17,7 @@ public:
   void OnWmPaint(HWND);
   void OnWmDestroy(HWND);
   void OnWmClose(HWND);
+  virtual ~MainWnd();
 };
 
 }

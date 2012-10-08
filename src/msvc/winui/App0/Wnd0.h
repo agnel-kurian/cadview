@@ -9,18 +9,18 @@ namespace App0 {
   ATOM RegisterDefWndClass(LPCTSTR lpClassName);
 
   class Wnd0 {
-
-  protected:
-    HWND hwnd;
     WNDPROC baseWndProc;
-    virtual LRESULT WndProc(UINT msg, WPARAM wParam, LPARAM lParam) = 0;
+    HWND hwnd;
+  protected:
+    WNDPROC GetBaseWndProc() const { return baseWndProc; }
+    virtual LRESULT WndProc(UINT msg, WPARAM wParam, LPARAM lParam);
   public:
     Wnd0(HWND hwnd); //  wraps around hwnd ...and subclasses it?
     Wnd0(LPCTSTR wndClass, DWORD dwExStyle = 0,
       LPCTSTR lpWindowName = _T(""), DWORD dwStyle = WS_OVERLAPPEDWINDOW,
       int X = CW_USEDEFAULT, int Y = CW_USEDEFAULT,
       int nWidth = CW_USEDEFAULT, int nHeight = CW_USEDEFAULT,
-      HWND hWndParent = 0, HMENU hMenu = 0);  //  creates hwnd based on existing window class
+      HWND hwndParent = 0, HMENU hMenu = 0);  //  creates hwnd based on existing window class
     //  we do not provide default that automatically registers a class
     //  we can provide separate class whose only job is to provide default
     //  window class with default overridable settings and registers itself
@@ -41,14 +41,17 @@ namespace App0 {
     BOOL SetTitle(const TCHAR* title);
 
     //virtual void OnWmClose(HWND hwnd);
-    virtual void OnWmDestroy(HWND hwnd);
+    virtual void OnWmNCDestroy(HWND hwnd);
     BOOL Show(int nCmdShow);
     BOOL Update();
 
     void Destroy();
-    virtual ~Wnd0(void);
+    virtual ~Wnd0();
 
-    static LRESULT WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+    HWND GetHandle() const { return hwnd; }
+
+    friend LRESULT CALLBACK Wnd0_WndProc(HWND hwnd, UINT msg,
+      WPARAM wParam, LPARAM lParam);
   };
 
   //  retrieves c++ object pointer from hwnd

@@ -1,8 +1,9 @@
 #include "StdAfx.h"
 #include "Wnd0.h"
-#include "../resource.h"
+#include "Utility.h"
 
 #include "app0_exception.h"
+#include <comdef.h>
 
 namespace App0 {
 
@@ -15,17 +16,21 @@ namespace App0 {
   }
 
   Wnd0::Wnd0(LPCTSTR lpClassName, DWORD dwExStyle, LPCWSTR lpWindowName,
-    DWORD dwStyle, int X, int Y, int nWidth, int nHeight, HWND hWndParent,
+    DWORD dwStyle, int X, int Y, int nWidth, int nHeight, HWND hwndParent,
     HMENU hMenu) : hwnd(0)
   {
+
     hwnd = CreateWindowEx(dwExStyle, lpClassName, lpWindowName,
-      WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, 0, 0,
+      dwStyle, X, Y, nWidth, nHeight, hwndParent, hMenu,
       GetModuleHandle(0), this);
+
+    LogLastError();
 
     if(hwnd == 0)
       throw app0_exception(ERR_WINDOW_CREATION_FAILED);
 
     Init();
+
   }
 
   BOOL Wnd0::Show(int nCmdShow){
@@ -36,8 +41,12 @@ namespace App0 {
     return UpdateWindow(hwnd);
   }
 
-  Wnd0::~Wnd0(void)
+  Wnd0::~Wnd0()
   {
+    if(hwnd == 0) return;
+    ::DestroyWindow(hwnd);
+    OutputDebugString(boost::str(tformat(_T("Wnd::~Wnd0() : %p\n")) % this)
+      .c_str());
   }
 
   ATOM RegisterDefWndClass(LPCTSTR lpClassName){
@@ -49,13 +58,13 @@ namespace App0 {
     wcex.hCursor = ::LoadCursor(NULL, IDC_ARROW);
     HINSTANCE hInstance = ::GetModuleHandle(NULL);
 
-    wcex.hIcon = (HICON) ::LoadImage(hInstance, MAKEINTRESOURCE(IDI_APP0),
+    wcex.hIcon = 0 /*(HICON) ::LoadImage(hInstance, MAKEINTRESOURCE(IDI_APP0),
       IMAGE_ICON, ::GetSystemMetrics(SM_CXICON), ::GetSystemMetrics(SM_CYICON),
-      LR_SHARED);
+      LR_SHARED)*/;
 
-    wcex.hIconSm = (HICON) ::LoadImage(hInstance, MAKEINTRESOURCE(IDI_APP0),
+    wcex.hIconSm = 0 /*(HICON) ::LoadImage(hInstance, MAKEINTRESOURCE(IDI_APP0),
       IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON),
-      ::GetSystemMetrics(SM_CYSMICON), LR_SHARED);
+      ::GetSystemMetrics(SM_CYSMICON), LR_SHARED)*/;
 
     wcex.hInstance = hInstance;
     wcex.lpfnWndProc = DefWindowProc;
@@ -67,6 +76,8 @@ namespace App0 {
   }
 
   BOOL Wnd0::SetTitle(const TCHAR* title){
+    OutputDebugString(boost::str(tformat(_T("Wnd0::SetTitle() : %p\n")) % this)
+      .c_str());
     return SetWindowText(hwnd, title);
   }
 
@@ -93,10 +104,8 @@ namespace App0 {
 
   LRESULT CALLBACK Wnd0_WndProc(HWND hwnd, UINT msg,
     WPARAM wParam, LPARAM lParam){
-    return Wnd0::WndProc(hwnd, msg, wParam, lParam);
-  }
+    assert(hwnd != 0);
 
-  LRESULT Wnd0::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam){
     LONG_PTR ptr = ::GetWindowLongPtr(hwnd, GWL_USERDATA);
     Wnd0* window = reinterpret_cast<Wnd0*>(ptr);
     if(window == 0)
@@ -105,19 +114,34 @@ namespace App0 {
     return window->WndProc(msg, wParam, lParam);
   }
 
+  //LRESULT Wnd0::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam){
+  //  LONG_PTR ptr = ::GetWindowLongPtr(hwnd, GWL_USERDATA);
+  //  Wnd0* window = reinterpret_cast<Wnd0*>(ptr);
+  //  if(window == 0)
+  //    throw app0_exception(_T("Object pointer is 0."));
+
+  //  return window->WndProc(msg, wParam, lParam);
+  //}
+
   LRESULT Wnd0::WndProc(UINT msg, WPARAM wParam, LPARAM lParam){
+
     switch(msg){
-      HANDLE_MSG(hwnd, WM_DESTROY, OnWmDestroy);
+      HANDLE_MSG(hwnd, WM_NCDESTROY, OnWmNCDestroy);
     }
 
     return baseWndProc(hwnd, msg, wParam, lParam);
   }
 
-  void Wnd0::OnWmDestroy(HWND hwnd){
+  void Wnd0::OnWmNCDestroy(HWND hwnd){
     this->hwnd = 0;
+    OutputDebugString(
+      boost::str(tformat(_T("Wnd0::OnWmNCDestroy() : %p\n")) % this).c_str());
   }
 
   void Wnd0::Destroy(){
+    assert(hwnd != 0);
+    if(hwnd == 0) return;
     ::DestroyWindow(hwnd);
   }
+
 }
