@@ -45,8 +45,6 @@ namespace App0 {
   {
     if(hwnd == 0) return;
     ::DestroyWindow(hwnd);
-    OutputDebugString(boost::str(tformat(_T("Wnd::~Wnd0() : %p\n")) % this)
-      .c_str());
   }
 
   ATOM RegisterDefWndClass(LPCTSTR lpClassName){
@@ -76,8 +74,6 @@ namespace App0 {
   }
 
   BOOL Wnd0::SetTitle(const TCHAR* title){
-    OutputDebugString(boost::str(tformat(_T("Wnd0::SetTitle() : %p\n")) % this)
-      .c_str());
     return SetWindowText(hwnd, title);
   }
 
@@ -134,14 +130,16 @@ namespace App0 {
 
   void Wnd0::OnWmNCDestroy(HWND hwnd){
     this->hwnd = 0;
-    OutputDebugString(
-      boost::str(tformat(_T("Wnd0::OnWmNCDestroy() : %p\n")) % this).c_str());
   }
 
   void Wnd0::Destroy(){
     assert(hwnd != 0);
     if(hwnd == 0) return;
     ::DestroyWindow(hwnd);
+  }
+
+  Wnd0::operator HWND(){
+    return hwnd;
   }
 
 }

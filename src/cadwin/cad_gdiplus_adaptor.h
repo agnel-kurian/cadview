@@ -17,6 +17,10 @@ using Gdiplus::Graphics;
 using Gdiplus::Color;
 using Gdiplus::Pen;
 using Gdiplus::PointF;
+using Gdiplus::GraphicsState;
+using Gdiplus::REAL;
+
+using std::vector;
 
 template<typename T> class cad_gdiplus_adaptor {
   Graphics gr;
@@ -28,6 +32,10 @@ public:
 
   cad_gdiplus_adaptor(HDC dc) : gr(dc), p0(Color(0, 0, 0), 0.0f) {
     state = gr.Save();
+  }
+
+  cad_gdiplus_adaptor(cad_win_adaptor<T>& gui) : p0(Color(0, 0, 0), 0.0f),
+    gr(gui.get_hwnd()) {
   }
 
   void set_matrix(T scale, T translate_x, T translate_y){
@@ -43,6 +51,10 @@ public:
 
   void move_to(const point_2d<T>& p){
     pen_pos = p;
+  }
+
+  void move_to(const T x, const T y){
+    pen_pos = point_2d<T>(x, y);
   }
 
   void line_to(const T x, const T y){
@@ -61,12 +73,15 @@ public:
       pts.push_back(PointF((float)point.x, (float)point.y));
     }
 
-    gr.DrawLine(&p0, &pts[0], n);
+    gr.DrawLines(&p0, &pts[0], n);
   }
 
   void device_to_user(T *x, T *y){
     PointF p((float) *x, (float) *y);
-    mx.TransformPoints(&p, 1);
+    matrix_type mx;
+    gr.GetTransform(&mx);
+    mx.Invert();
+    mx.TransformPoints(&p);
     *x = (T) p.X;
     *y = (T) p.Y;
   }
@@ -74,8 +89,7 @@ public:
   static void set_matrix(matrix_type *mx, T scale,
     T translate_x, T translate_y){
 
-    *mx = Matrix();
-
+    mx->Reset();
     mx->Scale((float) scale, (float) scale);
     mx->Translate((float) translate_x, (float) translate_y);
 
