@@ -24,10 +24,10 @@ namespace App0 {
       dwStyle, X, Y, nWidth, nHeight, hwndParent, hMenu,
       GetModuleHandle(0), this);
 
-    LogLastError();
-
-    if(hwnd == 0)
+    if(hwnd == 0){
+      LogLastError();
       throw app0_exception(ERR_WINDOW_CREATION_FAILED);
+    }
 
     Init();
 
