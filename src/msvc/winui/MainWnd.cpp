@@ -29,33 +29,33 @@ MainWnd::MainWnd() : Wnd0(CLASS_NAME, 0, _T("CAD View"), WS_OVERLAPPEDWINDOW,
 LRESULT MainWnd::WndProc(UINT msg, WPARAM wParam, LPARAM lParam){
   HWND hwnd = GetHandle();
   switch(msg){
-    HANDLE_MSG(hwnd, WM_CLOSE, OnWmClose);
-    HANDLE_MSG(hwnd, WM_DESTROY, OnWmDestroy);
-    HANDLE_MSG(hwnd, WM_SIZE, OnWmSize);
-    HANDLE_MSG(hwnd, WM_COMMAND, OnWmCommand);
-    HANDLE_MSG(hwnd, WM_MOUSEWHEEL, OnWmMouseWheel);
+    HANDLE_MSG(hwnd, WM_CLOSE, OnClose);
+    HANDLE_MSG(hwnd, WM_DESTROY, OnDestroy);
+    HANDLE_MSG(hwnd, WM_SIZE, OnSize);
+    HANDLE_MSG(hwnd, WM_COMMAND, OnCommand);
+    HANDLE_MSG(hwnd, WM_MOUSEWHEEL, OnMouseWheel);
   }
 
   //  do not call inherited static WndProc here! will cause recursion.
   return Wnd0::WndProc(msg, wParam, lParam);
 }
 
-void MainWnd::OnWmPaint(HWND){
+void MainWnd::OnPaint(HWND){
   HWND hwnd = GetHandle();
   PAINTSTRUCT ps;
   ::BeginPaint(hwnd, &ps);
   ::EndPaint(hwnd, &ps);
 }
 
-void MainWnd::OnWmClose(HWND){
+void MainWnd::OnClose(HWND){
   Destroy();
 }
 
-void MainWnd::OnWmDestroy(HWND){
+void MainWnd::OnDestroy(HWND){
   ::PostQuitMessage(0);
 }
 
-void MainWnd::OnWmSize(HWND, UINT state, int cx, int cy){
+void MainWnd::OnSize(HWND, UINT state, int cx, int cy){
   HWND hwnd = *this;
   RECT rect;
   ::GetClientRect(hwnd, &rect);
@@ -87,13 +87,13 @@ void MainWnd::SetCad(CadWnd* cad){
   this->cad = cad;
 }
 
-void MainWnd::OnWmCommand(HWND, int id, HWND hwndCtl, UINT codeNotify){
+void MainWnd::OnCommand(HWND, int id, HWND hwndCtl, UINT codeNotify){
   switch(id){
   case ID_FILE_POLYLINE:
-    GetCad()->GetView()->run_polyline_cmd();
+    GetCad().GetView()->run_polyline_cmd();
     break;
   case ID_FILE_SELECT:
-    GetCad()->GetView()->run_select_cmd();
+    GetCad().GetView()->run_select_cmd();
     break;
   case ID_FILE_EXIT:
     ::DestroyWindow(*this);
@@ -101,7 +101,7 @@ void MainWnd::OnWmCommand(HWND, int id, HWND hwndCtl, UINT codeNotify){
   }
 }
 
-void MainWnd::OnWmMouseWheel(HWND hwnd, int xPos, int yPos,
+void MainWnd::OnMouseWheel(HWND hwnd, int xPos, int yPos,
   int zDelta, UINT fwKeys){
 
   cad_core::Mouse_scroll_direction dir = (zDelta < 0)

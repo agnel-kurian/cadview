@@ -18,15 +18,13 @@ public:
   void SetView(view_type* view);
   view_type* GetView(){ return view; }
 
-  void OnWmPaint(HWND);
-  void OnWmMouseMove(HWND, int x, int y, UINT keyFlags);
-  void OnWmLButtonDown(HWND hwnd, BOOL fDoubleClick,
-    int x, int y, UINT keyFlags);
-  void OnWmLButtonUp(HWND hwnd, int x, int y, UINT keyFlags);
-  void OnWmMButtonDown(HWND hwnd, BOOL fDoubleClick,
-    int x, int y, UINT keyFlags);
-  void OnWmMButtonUp(HWND hwnd, int x, int y, UINT flags);
-  void OnWmRButtonUp(HWND hwnd, int x, int y, UINT flags);
+  void OnPaint(HWND);
+  void OnMouseMove(HWND, int x, int y, UINT keyFlags);
+  void OnLButtonDown(HWND hwnd, BOOL fDoubleClick, int x, int y, UINT keyFlags);
+  void OnLButtonUp(HWND hwnd, int x, int y, UINT keyFlags);
+  void OnMButtonDown(HWND hwnd, BOOL fDoubleClick, int x, int y, UINT keyFlags);
+  void OnMButtonUp(HWND hwnd, int x, int y, UINT flags);
+  void OnRButtonUp(HWND hwnd, int x, int y, UINT flags);
 
 protected:
   virtual LRESULT WndProc(UINT msg, WPARAM wParam, LPARAM lParam);

@@ -15,19 +15,19 @@ LRESULT CadWnd::WndProc(UINT msg, WPARAM wParam, LPARAM lParam){
   WNDPROC baseWndProc = GetBaseWndProc();
 
   switch(msg){
-    HANDLE_MSG(hwnd, WM_PAINT, OnWmPaint);
-    HANDLE_MSG(hwnd, WM_MOUSEMOVE, OnWmMouseMove);
-    HANDLE_MSG(hwnd, WM_LBUTTONDOWN, OnWmLButtonDown);
-    HANDLE_MSG(hwnd, WM_LBUTTONUP, OnWmLButtonUp);
-    HANDLE_MSG(hwnd, WM_MBUTTONDOWN, OnWmMButtonDown);
-    HANDLE_MSG(hwnd, WM_MBUTTONUP, OnWmMButtonUp);
-    HANDLE_MSG(hwnd, WM_RBUTTONUP, OnWmRButtonUp);
+    HANDLE_MSG(hwnd, WM_PAINT, OnPaint);
+    HANDLE_MSG(hwnd, WM_MOUSEMOVE, OnMouseMove);
+    HANDLE_MSG(hwnd, WM_LBUTTONDOWN, OnLButtonDown);
+    HANDLE_MSG(hwnd, WM_LBUTTONUP, OnLButtonUp);
+    HANDLE_MSG(hwnd, WM_MBUTTONDOWN, OnMButtonDown);
+    HANDLE_MSG(hwnd, WM_MBUTTONUP, OnMButtonUp);
+    HANDLE_MSG(hwnd, WM_RBUTTONUP, OnRButtonUp);
   }
 
   return baseWndProc(hwnd, msg, wParam, lParam);
 }
 
-void CadWnd::OnWmPaint(HWND){
+void CadWnd::OnPaint(HWND){
   HWND hwnd = GetHandle();
   PAINTSTRUCT ps;
   ::BeginPaint(hwnd, &ps);
@@ -39,33 +39,33 @@ void CadWnd::OnWmPaint(HWND){
 
 }
 
-void CadWnd::OnWmMouseMove(HWND, int x, int y, UINT keyFlags){
+void CadWnd::OnMouseMove(HWND, int x, int y, UINT keyFlags){
   view->mouse_move(x, y);
 }
 
-void CadWnd::OnWmLButtonDown(HWND hwnd, BOOL fDoubleClick,
+void CadWnd::OnLButtonDown(HWND hwnd, BOOL fDoubleClick,
   int x, int y, UINT keyFlags){
 
   view->mouse_down(cad_core::Mouse_button_Left, x, y);
 
 }
 
-void CadWnd::OnWmLButtonUp(HWND hwnd, int x, int y, UINT keyFlags){
+void CadWnd::OnLButtonUp(HWND hwnd, int x, int y, UINT keyFlags){
   view->mouse_up(cad_core::Mouse_button_Left, x, y);
 }
 
-void CadWnd::OnWmMButtonDown(HWND hwnd, BOOL fDoubleClick,
+void CadWnd::OnMButtonDown(HWND hwnd, BOOL fDoubleClick,
   int x, int y, UINT keyFlags){
 
   view->mouse_down(cad_core::Mouse_button_Middle, x, y);
 
 }
 
-void CadWnd::OnWmMButtonUp(HWND hwnd, int x, int y, UINT flags){
+void CadWnd::OnMButtonUp(HWND hwnd, int x, int y, UINT flags){
   view->mouse_up(cad_core::Mouse_button_Middle, x, y);
 }
 
-void CadWnd::OnWmRButtonUp(HWND hwnd, int x, int y, UINT flags){
+void CadWnd::OnRButtonUp(HWND hwnd, int x, int y, UINT flags){
   view->mouse_up(cad_core::Mouse_button_Right, x, y);
 }
 
