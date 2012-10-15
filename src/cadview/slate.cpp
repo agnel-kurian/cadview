@@ -130,7 +130,8 @@ gtk_slate_expose(GtkWidget *widget,
 {
   GtkSlate *slate = GTK_SLATE(widget);
 
-  slate->view->paint();
+	view_type::graphics_type gr(slate->view->get_gui());
+  slate->view->paint(gr);
 
   return FALSE;
 }

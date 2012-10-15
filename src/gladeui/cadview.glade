@@ -25,9 +25,9 @@
             <property name="can_focus">False</property>
             <child>
               <object class="GtkMenuItem" id="menuitem1">
+                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="label" translatable="yes">_File</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
@@ -37,31 +37,34 @@
                     <child>
                       <object class="GtkImageMenuItem" id="select">
                         <property name="label" translatable="yes">Select</property>
+                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="image">image2</property>
                         <property name="use_stock">False</property>
+                        <property name="always_show_image">True</property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="polyline">
                         <property name="label" translatable="yes">Polyline</property>
+                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="image">image1</property>
                         <property name="use_stock">False</property>
+                        <property name="always_show_image">True</property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="quit">
                         <property name="label">gtk-quit</property>
+                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                        <property name="always_show_image">True</property>
                       </object>
                     </child>
                   </object>
