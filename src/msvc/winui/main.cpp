@@ -36,10 +36,10 @@ try {
 
   RegisterDefWndClass(MainWnd::CLASS_NAME);
   MainWnd mainWnd;
-  mainWnd.SetTitle(_T("Testing"));
+  mainWnd.SetTitle(_T("cadview - Windows API Client"));
   RegisterDefWndClass(CadWnd::CLASS_NAME);
-  CadWnd cadWnd(mainWnd.GetHandle());
-  CmdLineWnd clWnd(mainWnd.GetHandle());
+  CadWnd cadWnd(mainWnd);
+  CmdLineWnd clWnd(mainWnd);
   LogWnd logWnd(mainWnd.GetHandle());
 
   MSG msg;

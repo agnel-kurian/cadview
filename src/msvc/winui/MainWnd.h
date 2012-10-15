@@ -9,6 +9,11 @@ using App0::Wnd0;
 
 namespace cadwin {
 
+class LogWnd;
+class CadWnd;
+class CmdLineWnd;
+class MainWnd;
+
 class MainWnd : public Wnd0 {
   CmdLineWnd* cl;
   LogWnd* log;
@@ -20,12 +25,12 @@ protected:
 public:
   static const TCHAR *CLASS_NAME;
   MainWnd();
-  void OnWmPaint(HWND);
-  void OnWmDestroy(HWND);
-  void OnWmClose(HWND);
-  void OnWmSize(HWND, UINT state, int cx, int cy);
-  void OnWmCommand(HWND, int id, HWND hwndCtl, UINT codeNotify);
-  void OnWmMouseWheel(HWND hwnd, int xPos, int yPos, int zDelta, UINT fwKeys);
+  void OnPaint(HWND);
+  void OnDestroy(HWND);
+  void OnClose(HWND);
+  void OnSize(HWND, UINT state, int cx, int cy);
+  void OnCommand(HWND, int id, HWND hwndCtl, UINT codeNotify);
+  void OnMouseWheel(HWND hwnd, int xPos, int yPos, int zDelta, UINT fwKeys);
 
 
   virtual ~MainWnd();
@@ -34,7 +39,7 @@ public:
   void SetLog(LogWnd* log);
   void SetCad(CadWnd* cad);
 
-  CadWnd* GetCad(){ return cad; }
+  CadWnd& GetCad(){ return *cad; }
 
 };
 
