@@ -25,6 +25,8 @@ public:
   void OnWmClose(HWND);
   void OnWmSize(HWND, UINT state, int cx, int cy);
   void OnWmCommand(HWND, int id, HWND hwndCtl, UINT codeNotify);
+  void OnWmMouseWheel(HWND hwnd, int xPos, int yPos, int zDelta, UINT fwKeys);
+
 
   virtual ~MainWnd();
 

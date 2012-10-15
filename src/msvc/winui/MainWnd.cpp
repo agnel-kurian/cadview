@@ -33,6 +33,7 @@ LRESULT MainWnd::WndProc(UINT msg, WPARAM wParam, LPARAM lParam){
     HANDLE_MSG(hwnd, WM_DESTROY, OnWmDestroy);
     HANDLE_MSG(hwnd, WM_SIZE, OnWmSize);
     HANDLE_MSG(hwnd, WM_COMMAND, OnWmCommand);
+    HANDLE_MSG(hwnd, WM_MOUSEWHEEL, OnWmMouseWheel);
   }
 
   //  do not call inherited static WndProc here! will cause recursion.
@@ -99,5 +100,18 @@ void MainWnd::OnWmCommand(HWND, int id, HWND hwndCtl, UINT codeNotify){
     break;
   }
 }
+
+void MainWnd::OnWmMouseWheel(HWND hwnd, int xPos, int yPos,
+  int zDelta, UINT fwKeys){
+
+  cad_core::Mouse_scroll_direction dir = (zDelta < 0)
+    ? cad_core::Mouse_scroll_direction_Down
+      : cad_core::Mouse_scroll_direction_Up;
+  POINT cp = { xPos, yPos };
+  if(ScreenToClient(*cad, &cp))
+    cad->GetView()->mouse_scroll(dir, cp.x, cp.y);
+
+}
+
 
 }

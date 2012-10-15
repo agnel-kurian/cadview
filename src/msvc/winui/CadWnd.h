@@ -27,8 +27,6 @@ public:
     int x, int y, UINT keyFlags);
   void OnWmMButtonUp(HWND hwnd, int x, int y, UINT flags);
   void OnWmRButtonUp(HWND hwnd, int x, int y, UINT flags);
-  void OnWmMouseWheel(HWND hwnd, int xPos, int yPos,
-    int zDelta, UINT fwKeys);
 
 protected:
   virtual LRESULT WndProc(UINT msg, WPARAM wParam, LPARAM lParam);
