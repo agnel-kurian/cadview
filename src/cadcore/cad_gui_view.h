@@ -22,7 +22,7 @@ template <typename T, typename U> class cad_gui_view {
 
   U& gui;
 
-  vector< cad_cmd<T, U> > commands;
+  //vector< cad_cmd<T, U> > commands;
 
 public:
   typedef typename U::graphics_type graphics_type;
